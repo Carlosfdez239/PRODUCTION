@@ -1,0 +1,85 @@
+#!/bin/bash
+
+function check_argv_is_gw
+{
+    local ARGV=$1
+    if [ $ARGV -ne 1 ]
+    then
+        echo "usage: $0 [GWID]"
+        exit 1
+    fi
+}
+
+function sshcmd_tunnel_server
+{
+    local COMMAND=$1
+    ssh guest@loadsensing.wocs3.com  -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $COMMAND
+}
+
+function get_gw_pass
+{
+    local GW_ID=$1
+    sshcmd_tunnel_server "ls_gw_pass $1"
+}
+
+function get_gw_pass_ssh
+{
+    local GW_ID=$1
+    local GW_PASS=$(get_gw_pass $GW_ID)
+    echo $GW_PASS | awk '{print $8}'
+}
+
+function get_gw_pass_web
+{
+    local GW_ID=$1
+    local GW_PASS=$(get_gw_pass $GW_ID)
+    echo $GW_PASS | awk '{print $13}'
+}
+
+function get_gw_ip
+{
+    local GW_ID=$1
+    sshcmd_tunnel_server "ls_get_gw_ip $GW_ID"
+}
+
+function get_gw_connection_type
+{
+    local GW_ID=$1
+    if [ "$GW_ID" -gt "11000" ]  && [ "$GW_ID" -lt "20000" ]
+    then
+        echo "TUNNEL"
+    else
+        echo "VPN"
+    fi
+}
+
+function create_ssh_tunnel
+{
+    local GW_ID=$1
+    if [ $(nc -z localhost $GW_ID && echo 0 || echo 1) -ne 0 ]
+    then
+        printf "Creating tunnel... \r"
+        ssh -f guest@loadsensing.wocs3.com -L:${GW_ID}:127.0.0.1:${GW_ID} sleep 5
+    else
+        printf "Tunnel already exist \r"
+    fi
+    
+}
+
+function ssh_gw
+{
+    local GW_ID=$1
+    local GW_PASS=$2
+    local USER="root"
+
+    if [ $(get_gw_connection_type $GW_ID) == "TUNNEL" ]
+    then
+        create_ssh_tunnel $GW_ID
+        IP="localhost"
+        sshpass -p$GW_PASS ssh -p $GW_ID -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER@$IP
+    else
+        IP=$(get_gw_ip $GW_ID)
+        sshcmd_tunnel_server "-t sshpass -p$GW_PASS ssh -o LogLevel=ERROR -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $USER@$IP"
+    fi
+}
+

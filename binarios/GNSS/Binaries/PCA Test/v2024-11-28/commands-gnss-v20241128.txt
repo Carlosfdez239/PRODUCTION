@@ -1,0 +1,23 @@
+# note that 'echo -e' automatically adds \n at the end of the command
+export USB=/dev/ttyUSB0
+
+echo -e '\nTEST_VERSION' > $USB
+echo -e '\nTEST_STM32_ID' > $USB
+echo -e '\nTEST_FLASH' > $USB
+echo -e '\nTEST_FLASH_ENABLE' > $USB
+echo -e '\nTEST_FLASH_DISABLE' > $USB
+echo -e '\nTEST_MAG_MMC' > $USB
+echo -e '\nTEST_HP_ACC' > $USB
+echo -e '\nTEST_REBOOT' > $USB
+echo -e '\nTEST_VIN' > $USB
+echo -e '\nTEST_TEMP_HUM' > $USB
+echo -e '\nTEST_LOWPOW' > $USB
+echo -e '\nTEST_FULLPOW' > $USB
+echo -e '\nTEST_LP_ACC' > $USB
+echo -e '\nTEST_LORA_TONE' > $USB
+echo -e '\nTEST_LORA_ENABLE' > $USB
+echo -e '\nTEST_LORA_DISABLE' > $USB
+echo -e '\nTEST_LORA_TX' > $USB
+echo -e '\nTEST_LORA_RX' > $USB
+echo -e '\nTEST_LORA_ID' > $USB
+

@@ -1,0 +1,1 @@
+More info can be found in the doc [#66414 - Design how to simplify definition and implementation of i/o messages (node)](https://docs.google.com/document/d/14RFIh6Of60opekxEn_65GyU6ISrRVnJd5t2CJs2afn0/edit#)

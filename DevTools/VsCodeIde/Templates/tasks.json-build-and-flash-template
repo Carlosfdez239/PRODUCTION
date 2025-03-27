@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build solution",
+            "group": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/Firmware/LoadSensingG_App/armgcc/"
+            },
+            "command": [
+                "${workspaceFolder}/DevTools/Misc/mkls clean && ${workspaceFolder}/DevTools/Misc/mkls ${input:DebugOrRelease} -j4 PRODUCT=${input:Product}"
+            ]
+        },
+        {
+            "label": "Flash solution",
+            "group": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/Firmware/LoadSensingG_App/armgcc/"
+            },
+            "command": [
+                "make download"
+            ]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "Product",
+            "type": "pickString",
+            "description": "Product will be build",
+            "options": [
+                "BLINKER",
+                "LASER360_G65",
+                "DYN",
+                "TILT360"
+            ],
+            "default": "TILT360"
+        },
+        {
+            "id": "DebugOrRelease",
+            "type": "pickString",
+            "description": "Sort of software",
+            "options": [
+                "release",
+                "debug"
+            ],
+            "default": "debug"
+        }
+    ]
+}

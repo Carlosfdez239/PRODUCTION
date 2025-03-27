@@ -1,0 +1,9 @@
+# git+ssh://git@bitbucket.org/worldsensing_traffic/ls-message_parsing.git@development
+pyserial
+pytz
+wxPython==4.2.1
+bitstring
+# requirements for DevTools/Misc/dyn_module
+pandas
+matplotlib
+numpy

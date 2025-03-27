@@ -1,0 +1,18 @@
+./flash_and_configure.sh VIB
+
+Paso 1. Descargando la aplicación a través del bootloader.
+Loadsensing DFU Tool
+
+========================================
+Node reboot attempt 0Checking if there is a bootloader without application
+Application found on device.
+Node reboot attempt 1Node reboot attempt 2Node reboot attempt 3Node reboot attempt 4Node reboot attempt 5Node reboot attempt 6Node reboot attempt 7Node reboot attempt 8Node reboot attempt 9Node reboot attempt 10Esperando...
+Paso 3. Desconecte el cable USB-C del nodo. Luego, vuelva a conectarlo.
+Presione una tecla para continuar...
+Esperando a que el nodo se reinicie..
+Paso 4. Estableciendo el ID del Nodo y el ID del Producto para VIB.
+Introduce el número de serie: Configurando VIB con serial number 131132 ...
+\x13\x20\x85\x5E\x14\x00\x56\x00\x02\x00\x3c
+Message: 0x00 0x02 0x00 0x3c 
+Seteando ID...
+Presione una tecla para terminar...

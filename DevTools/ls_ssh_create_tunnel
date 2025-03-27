@@ -1,0 +1,23 @@
+#!/bin/bash
+# Used to create tunnel to access old gateway.
+
+# Script copied from loadsensing-servers repo if it doens't work
+# ensure it's the latest version.
+
+LIBPATH="$(dirname "$0")/lib/ls_gw_utils"
+source $LIBPATH
+
+check_argv_is_gw $#
+GW_ID=$1
+if [ $(get_gw_connection_type $GW_ID) == "TUNNEL" ]
+then
+    ARGS=""
+        for ARG in "$@"
+        do
+            ARGS="$ARGS -L:${ARG}:127.0.0.1:${ARG}"
+        done
+
+    ssh guest@loadsensing.wocs3.com $ARGS
+else
+    echo "This gateway use vpn, we cannot create a tunnel to it"
+fi

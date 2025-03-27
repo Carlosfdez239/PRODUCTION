@@ -1,0 +1,61 @@
+#!/bin/bash
+#set -x
+
+TEMP_FILE=/tmp/`basename $0`.tmp.$$
+MESSAGE="$1"
+SERIAL_PORT=$2
+SOCKET_OPTION=$3
+SERVER_IP=$4
+#echo $TEMP_FILE
+
+function usage () {
+    echo "Usage: $0 \"message_to_send\" serial_tty [-s IP]" >&2
+    echo "       message_to_send: ascii or hexadecimal accepted. Hexadecimal format: \xYY to send YY char." >&2
+    echo "       -s: instead of using serial_tty, connect through a socket to the server on IP."
+    echo "           In this case, the serial_tty is used to deduce the port of the connection."
+    exit 1
+}
+
+if [[ $# -ne 2 && $# -ne 4 ]]; then
+    usage
+fi
+
+if [[ $# -eq 4 && $SOCKET_OPTION != '-s' ]]; then
+    usage
+fi
+
+if [[ $# -eq 2 && ! -c $SERIAL_PORT ]]; then
+    echo "$SERIAL_PORT does not exist"
+    exit 2
+fi
+
+
+
+echo -en '\x10\x02' > $TEMP_FILE                                # Message begins: DLE STX
+echo -en "$MESSAGE" | sed 's/\x10/\x10\x10/g' >> $TEMP_FILE     # Any DLE in the body is duplicated
+echo -en '\x10\x03' >> $TEMP_FILE                               # Message ends: DLE STX
+
+
+# For some reason, when echoing or cating a big message some characters are lost.
+# As a workaround the characters of the message will be sent one by one.
+
+
+
+if [ $# -eq 2 ]; then
+    MESSAGE_SIZE=$(cat $TEMP_FILE | wc -c)
+    for i in `seq $MESSAGE_SIZE`
+    do 
+        #mdomingo: The following line has a problem with the 0x0a byte
+    #    cat $TEMP_FILE | cut -c $i |tr -d '\n' > $SERIAL_PORT
+        let "j=$i-1"
+        dd if=$TEMP_FILE ibs=1 count=1 skip=$j of=$SERIAL_PORT 2> /dev/null
+    done
+else
+    TTY_NUM=$(echo $SERIAL_PORT|sed 's/.*[^0-9]\([0-9]*\)$/\1/')
+    SHARE_PORT=$((54400+$TTY_NUM))
+    nc -q 0 $SERVER_IP $SHARE_PORT < $TEMP_FILE
+fi
+
+
+rm -f $TEMP_FILE
+

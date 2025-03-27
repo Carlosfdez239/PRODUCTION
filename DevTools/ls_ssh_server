@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ "$1" == "" ]; then
+	echo "Usage: gw_ssh <gw id> [<gw_id>]*"
+fi
+
+ARGS=""
+    for ARG in "$@"
+    do
+        ARGS="$ARGS -L:${ARG}:127.0.0.1:${ARG}"
+    done
+
+ssh guest@loadsensing.wocs3.com $ARGS

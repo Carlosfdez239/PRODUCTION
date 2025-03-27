@@ -1,0 +1,53 @@
+#!/bin/bash
+#================================================================
+# HEADER
+#================================================================
+#% SYNOPSIS
+#%    ${SCRIPT_NAME}
+#%
+#% DESCRIPTION
+#%    Launches a command in the fw_develdockerimage docker.
+#%    It only works inside a git repo, as it uses a git command
+#%    to get the root of the repo.
+#%
+#% OPTIONS
+#%    All the arguments are passed to the command in the docker.
+#%
+#% EXAMPLES
+#%    ${SCRIPT_NAME} ./test_compile_all.sh
+#%
+#================================================================
+#- IMPLEMENTATION
+#-    version         ${SCRIPT_NAME} 0.1.0
+#-    author          Worldsensing
+#-    copyright       Copyright (c) https://www.worldsensing.com
+#-    license
+#-
+#================================================================
+#  HISTORY
+#     2023/07/04 : ffigueras: Script creation
+#
+#================================================================
+#  DEBUG OPTION
+#
+#================================================================
+# END_OF_HEADER
+#================================================================
+
+# The following flags are added to avoid unexpected behaviour of the script
+# -u : error on undefined variable : exits the script if a variable is used before being defined
+set -u
+
+DEVEL_DOCKER=eu.gcr.io/engineering-test-197116/fw_develdockerimage
+
+if ! git rev-parse --is-inside-work-tree &>/dev/null
+then 
+    echo "`basename $0` script only works inside a git working directory."
+    exit 1
+fi
+
+HOST_DIR=$(cd `git rev-parse --show-toplevel`/..  && pwd)
+COMPILATION_RELATIVE_PATH=${PWD#${HOST_DIR}}
+
+docker run --user "$(id -u):$(id -g)" --mount type=bind,src=${HOST_DIR},dst=/tmp -w /tmp/${COMPILATION_RELATIVE_PATH} ${DEVEL_DOCKER} $@
+

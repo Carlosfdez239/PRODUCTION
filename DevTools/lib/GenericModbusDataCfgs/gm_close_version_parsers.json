@@ -1,0 +1,370 @@
+[
+    {
+        "cfg_id": "0", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 10, 
+            "parity": 0, 
+            "sensor_instructions": "008001002FFFE0C01800000028380200040F008001C345E000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 5000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 32, 
+                "label": "res", 
+                "signed_value": true, 
+                "unit": "res"
+            }
+        ], 
+        "created_date": "2020-03-18 16:01:40", 
+        "csv_filename": "", 
+        "description": "Result: -2", 
+        "manufacturer": "regression test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "traditional math operations"
+    }, 
+    {
+        "cfg_id": "1", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 15, 
+            "parity": 0, 
+            "sensor_instructions": "017FFFFFFFC051234567802178001000519021728020006008001C6805CA00800206C05CA0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 5000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 32, 
+                "label": "push-pop", 
+                "signed_value": false, 
+                "unit": "(max)"
+            }, 
+            {
+                "check_out_of_range": false, 
+                "chn_num": 2, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 10, 
+                "label": "Dup", 
+                "signed_value": false, 
+                "unit": "(5)"
+            }, 
+            {
+                "check_out_of_range": false, 
+                "chn_num": 3, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 10, 
+                "label": "Burry", 
+                "signed_value": false, 
+                "unit": "(6)"
+            }, 
+            {
+                "check_out_of_range": false, 
+                "chn_num": 4, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 10, 
+                "label": "Dig", 
+                "signed_value": false, 
+                "unit": "(7)"
+            }
+        ], 
+        "created_date": "2020-03-20 12:58:53", 
+        "csv_filename": "", 
+        "description": "Result:", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 40, 
+        "sensor_model": "Push Pop Dup Dig Bury"
+    }, 
+    {
+        "cfg_id": "2", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 10, 
+            "parity": 0, 
+            "sensor_instructions": "004000C50802C07800000800BFE1FFFFE22262017FFFFFFFC485E000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 5000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 32, 
+                "label": "Result", 
+                "signed_value": false, 
+                "unit": " "
+            }
+        ], 
+        "created_date": "2020-03-18 17:27:21", 
+        "csv_filename": "", 
+        "description": "Result: 3758096371", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "Bitwise operations"
+    }, 
+    {
+        "cfg_id": "3", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 14, 
+            "parity": 0, 
+            "sensor_instructions": "05030202008001402000008210040401000405001020202170800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 5000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 2, 
+                "label": "Error", 
+                "signed_value": false, 
+                "unit": " "
+            }
+        ], 
+        "created_date": "2020-03-20 17:05:07", 
+        "csv_filename": "", 
+        "description": "Result: 1", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "Jump and branchs, no chain response"
+    }, 
+    {
+        "cfg_id": "4", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 7, 
+            "parity": 0, 
+            "sensor_instructions": "00400006008085C500400185C4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 500, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 5, 
+                "label": "Voltage", 
+                "signed_value": false, 
+                "unit": "Error"
+            }, 
+            {
+                "check_out_of_range": false, 
+                "chn_num": 2, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 4, 
+                "label": "Not called", 
+                "signed_value": false, 
+                "unit": "(NoU)"
+            }
+        ], 
+        "created_date": "2020-03-23 15:08:26", 
+        "csv_filename": "", 
+        "description": "Result: General error: Code: 0, Parameter: 0", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "Voltage error (SetSupplyThreshold to 10.0)"
+    }, 
+    {
+        "cfg_id": "6", 
+        "cfg_parameters": {
+            "baudrate": 115200, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 22, 
+            "parity": 0, 
+            "sensor_instructions": "011FF000000708220404023FC000000E9084080804FF8000001D2188101009FF0000003C4410202010000000007C8A2040400981C8BA00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 5000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "func (x) = x", 
+                "conversion_func_python": "lambda x: x", 
+                "data_conversion": true, 
+                "data_size": 16, 
+                "label": "Test", 
+                "signed_value": false, 
+                "unit": "Test"
+            }
+        ], 
+        "created_date": "2020-03-26 15:49:52", 
+        "csv_filename": "test.csv", 
+        "description": "Result: 12345", 
+        "manufacturer": "Regression test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "Special float comparision"
+    }, 
+    {
+        "cfg_id": "7", 
+        "cfg_parameters": {
+            "baudrate": 19200, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 12, 
+            "parity": 0, 
+            "sensor_instructions": "0000004000001000000400000100000040000010000004000001000000400000100000045D000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 3000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "", 
+                "conversion_func_python": "", 
+                "data_conversion": true, 
+                "data_size": 16, 
+                "label": "Test", 
+                "signed_value": false, 
+                "unit": "Test"
+            }
+        ], 
+        "created_date": "2020-03-26 16:01:47", 
+        "csv_filename": "test.csv", 
+        "description": "Result: General error: Code: 1, Parameter: 11", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 50, 
+        "sensor_model": "Maximum Stack elements"
+    },
+    {
+        "cfg_id": "8", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 4, 
+            "parity": 0, 
+            "sensor_instructions": "01448D159E080018C01DDDD174000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 6000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "", 
+                "conversion_func_python": "", 
+                "data_conversion": true, 
+                "data_size": 16, 
+                "label": "Test", 
+                "signed_value": false, 
+                "unit": "Test"
+            }
+        ], 
+        "created_date": "2022-02-08 19:37:17", 
+        "csv_filename": "test.csv", 
+        "description": "Result: General error: Code: 1, Parameter: 2", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 25, 
+        "sensor_model": "Write Simple Modbus write error with 32 bits"
+    },
+    {
+        "cfg_id": "9", 
+        "cfg_parameters": {
+            "baudrate": 9600, 
+            "databits": 8, 
+            "global_instructions": "000000000000000000000000000000", 
+            "instructions_version": 0, 
+            "number_global_instructions": 0, 
+            "number_sensor_instructions": 4, 
+            "parity": 0, 
+            "sensor_instructions": "01448D159E01000C600EEEE8BA000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000", 
+            "stopbits": 1, 
+            "timeout": 6000, 
+            "word_swap": true
+        }, 
+        "cfg_version": 0, 
+        "channels": [
+            {
+                "check_out_of_range": false, 
+                "chn_num": 1, 
+                "conversion_func_android": "", 
+                "conversion_func_python": "", 
+                "data_conversion": true, 
+                "data_size": 16, 
+                "label": "Test", 
+                "signed_value": false, 
+                "unit": "Test"
+            }
+        ], 
+        "created_date": "2022-02-08 23:10:15", 
+        "csv_filename": "test.csv", 
+        "description": "Result: General error: Code: 1, Parameter: 2", 
+        "manufacturer": "Regression Test", 
+        "max_allowed_sensors": 25, 
+        "sensor_model": "Write Multiple Modbus write error with 1 register and 32 bits"
+    }
+]

@@ -1,0 +1,22 @@
+./flash_and_configure.sh VIB
+
+Paso 1. Descargando la aplicación a través del bootloader.
+Loadsensing DFU Tool
+
+========================================
+
+Serial port error, please connect node.
+DFU failed.
+Node reboot attempt 0Checking if there is a bootloader without application
+Application found on device.
+Esperando...
+Paso 3. Desconecte el cable USB-C del nodo. Luego, vuelva a conectarlo.
+Presione una tecla para continuar...
+Esperando a que el nodo se reinicie..
+Paso 4. Estableciendo el ID del Nodo y el ID del Producto para VIB.
+Introduce el número de serie: Configurando VIB con serial number  ...
+\x13\x20\x85\x5E\x14\x00\x56\x00\x00\x00\x00
+/dev/ttyUSB0 does not exist
+Message: 0x00 0x00 0x00 0x00 
+Seteando ID...
+Presione una tecla para terminar...

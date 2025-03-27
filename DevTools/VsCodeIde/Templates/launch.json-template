@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/Firmware/LoadSensingG_App/armgcc/exe/loadsensingG.out",
+            "name": "Debug with stlink board STM32U5",
+            "request": "launch",
+            "type": "cortex-debug",
+            "device": "STM32U575ZIT6Q",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "parsed",
+            "servertype": "stlink",
+            "serverpath": "/opt/st_tools/stlink-gdb-server/bin/ST-LINK_gdbserver",
+            "interface": "swd",
+            "armToolchainPath": "/opt/armgcc-10.3/bin",
+            "showDevDebugTimestamps": true,
+            "svdFile": "${workspaceFolder}/DevTools/VsCodeIde/HelperFiles/STM32U5xx.svd",
+            "v1": false,
+            "stm32cubeprogrammer": "/usr/local/STMicroelectronics/STM32Cube/STM32CubeProgrammer/bin",
+            "preLaunchCommands": [
+                "set substitute-path /tmp/${workspaceFolderBasename} ${workspaceFolder}",
+            ]
+        }
+    ],
+    "version": "2.0.0"
+}

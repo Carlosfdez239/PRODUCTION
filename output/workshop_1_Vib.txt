@@ -1,0 +1,17 @@
+./flash_and_configure.sh VIB
+
+Paso 1. Descargando la aplicación a través del bootloader.
+Traceback (most recent call last):
+  File "/home/carlos/Documents/G7/PRODUCTION/lib/ls_updater.py", line 5, in <module>
+    import serial
+ModuleNotFoundError: No module named 'serial'
+Esperando...
+Paso 3. Desconecte el cable USB-C del nodo. Luego, vuelva a conectarlo.
+Presione una tecla para continuar...
+Esperando a que el nodo se reinicie..
+Paso 4. Estableciendo el ID del Nodo y el ID del Producto para VIB.
+Introduce el número de serie: Configurando VIB con serial number 131012 ...
+\x13\x20\x85\x5E\x14\x00\x56\x00\x01\xff\xc4
+Message: 0x00 0x01 0xff 0xc4 
+Seteando ID...
+Presione una tecla para terminar...

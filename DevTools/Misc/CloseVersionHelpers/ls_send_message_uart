@@ -1,0 +1,32 @@
+#!/bin/bash
+#set -x
+
+TEMP_FILE=/tmp/`basename $0`.tmp.$$
+MESSAGE="$1"
+SERIAL_PORT=$2
+#echo $TEMP_FILE
+
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 \"message_to_send\" serial_tty" >&2
+    echo "       message_to_send: ascii or hexadecimal accepted. Hexadecimal format: \xYY to send YY char." >&2
+    exit 1
+fi
+
+echo -en '\x10\x02' > $TEMP_FILE                                # Message begins: DLE STX
+echo -en "$MESSAGE" | sed 's/\x10/\x10\x10/g' >> $TEMP_FILE     # Any DLE in the body is duplicated
+echo -en '\x10\x03' >> $TEMP_FILE                               # Message ends: DLE STX
+
+
+# For some reason, when echoing or cating a big message some characters are lost.
+# As a workaround the characters of the message will be sent one by one.
+MESSAGE_SIZE=$(cat $TEMP_FILE | wc -c)
+for i in `seq $MESSAGE_SIZE`
+do 
+    #mdomingo: The following line has a problem with the 0x0a byte
+#    cat $TEMP_FILE | cut -c $i |tr -d '\n' > $SERIAL_PORT
+    let "j=$i-1"
+    dd if=$TEMP_FILE ibs=1 count=1 skip=$j of=$SERIAL_PORT 2> /dev/null
+done
+MESSAGE_DATE=$(date +%D-%T)
+echo "[$MESSAGE_DATE] $MESSAGE"
+rm -f $TEMP_FILE

@@ -1,0 +1,189 @@
+/*********************** COMMON COMMANDS *****************************/
+**** Get health
+./ls_send_message_uart "\x01" /dev/ttyUSB0
+
+**** Get sample now 
+./ls_send_message_uart "\x02" /dev/ttyUSB0
+
+**** Get sampling period configuration (not VW)
+./ls_send_message_uart "\x00\x82" /dev/ttyUSB0
+
+**** Get recover data all data from all time
+./ls_send_message_uart "\x03\x00\x00\x00\x00\x00\xFF\xFF\xFF\xFF" /dev/ttyUSB0
+
+**** Get Interval Data 
+./ls_send_message_uart "\x04" /dev/ttyUSB0
+
+**** Set sampling period configuration - 86400s (1 day)  (not VW)
+./ls_send_message_uart "\x82\x01\x51\x80" /dev/ttyUSB0
+**** Set sampling period configuration - 240s   (4 min)  (not VW)
+./ls_send_message_uart "\x82\x00\x00\xF0" /dev/ttyUSB0
+
+**** Set Product code 0x01 and serial num 0 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x01\x00\x00" /dev/ttyUSB0
+
+**** Set Product code and Serial Number
+# PrCode: 50 (0x32 for 1VW) | SN: 0 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x32\x00\x00" /dev/ttyUSB0
+# PrCode: 51 (0x33 for 5VW) | SN: 9 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x33\x00\x09" /dev/ttyUSB0
+# PrCode: 55 (0x37 for 5VW CE) | SN: 9 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x37\x00\x09" /dev/ttyUSB0
+
+# PrCode: 60 (0x3C for GSI) | SN: 10 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x3C\x00\x0a" /dev/ttyUSB0
+
+# PrCode: 70 (0x46 for VOLT) | SN: 170
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x46\x00\xAA" /dev/ttyUSB0
+
+**** Set Node Id
+./ls_send_message_uart "\x07\xBA\x65\x12\xFA\xID\xID" /dev/ttyUSB0
+./ls_send_message_uart "\x07\xBA\x65\x12\xFA\x38\xF3" /dev/ttyUSB0
+
+**** Get Node Info
+./ls_send_message_uart "\x43\x69\x00\x00" /dev/ttyUSB0
+
+**** Reboot the node
+./ls_send_message_uart "\x09"  /dev/ttyUSB0
+
+**** Set Time  {$ date +%s|xargs printf '%08x'|sed 's/\(..\)/\\x\1/g'}
+./ls_send_message_uart "\x05\xEP\xOC\xTI\xME"  /dev/ttyUSB0
+[2014/10/09-11:59] ./ls_send_message_uart "\x05\x54\x36\x5c\x72"  /dev/ttyUSB0
+
+**** Factory Reset
+./ls_send_message_uart "\x08\x75\xB5\x44\xA2"  /dev/ttyUSB0
+
+/******************** LS VW 5 ********************************/
+
+**** Set configuration
+
+/* Configuration all channel enabled with sweep A  Sampling period 30 seconds*/
+./ls_send_message_uart "\x80\x00\x00\x1E\x1F\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" /dev/ttyUSB0
+
+/* Configuration all channel enabled with sweep custom 800 2000 100 Sampling periods 30 seconds*/
+./ls_send_message_uart "\x80\x00\x00\x1E\x1F\x04\x04\x04\x04\x04\x03\x20\x07\xD0\x00\x64" /dev/ttyUSB0
+
+001E = Sampling Period
+1F = Channel Enabled Bitmap 
+04 = Channel 0 Sweep Custom (00 Sweep A, 01 Sweep B, 02 Sweep C, 03 Sweep D, 04 Sweep Custom)
+04 = Channel 1 Sweep Custom (00 Sweep A, 01 Sweep B, 02 Sweep C, 03 Sweep D, 04 Sweep Custom)
+04 = Channel 2 Sweep Custom (00 Sweep A, 01 Sweep B, 02 Sweep C, 03 Sweep D, 04 Sweep Custom)
+04 = Channel 3 Sweep Custom (00 Sweep A, 01 Sweep B, 02 Sweep C, 03 Sweep D, 04 Sweep Custom)
+04 = Channel 4 Sweep Custom (00 Sweep A, 01 Sweep B, 02 Sweep C, 03 Sweep D, 04 Sweep Custom)
+0320 = Sweep Custom Start Freq
+07D0= = Sweep Custom End Freq
+0064= = Sweep Custom Duration
+
+
+**** Get configuration of VW 5
+./ls_send_message_uart "\x00\x80" /dev/ttyUSB0
+
+
+/********************** LS GSI ********************************/
+
+
+**** Set channels configuration - sensors 1 to 5, protocol RST
+./ls_send_message_uart "\x81\x45\x00\x00\x00\x10\x00\x00\x02\x00\x00\x00\x30\x00\x00\x04\x00\x00\x00\x50" /dev/ttyUSB0
+0x45 -> 0x40 (RST) | 0x05 (5 channels)
+00 00 00 1 - 0 00 00 02 -> two sensors
+00 00 00 3 - 0 00 00 04 -> two sensors
+00 00 00 5 - 0          -> one sensor and padding
+
+./ls_send_message_uart "\x81\x72\x00\x00\x00\x00\xa9\x8a\xc7\x15\x31\x58\xe1\xfc\xa0\x55\x2a\x62\xb1\xc3\x4f\xb5\xe3\x3f\x94\x0a\xa4\xa2\xcb\x71\x54\xc5\x63\x85\xf5\xe0\xff\x00\x00\x00\x00\xa9\x8a\xc7\x15\x31\x58\xe1\xfc\xa0\x55\x2a\x62\xb1\xc3\x4f\xb5\xe3\x3f\x94\x0a\xa4\xa2\xcb\x71\x54\xc5\x63\x85\xf5\xe0\xff\x00\x00\x00\x00\xa9\x8a\xc7\x15\x31\x58\xe1\xfc\xa0\x55\x2a\x62\xb1\xc3\x4f\xb5\xe3\x3f\x94\x0a\xa4\xa2\xcb\x71\x54\xc5\x63\x85\xf5\xe0\xff\x00\x00\x00\x00\xa9\x8a\xc7\x15\x31\x58\xe1\xfc\xa0\x55\x2a\x62\xb1\xc3\x4f\xb5\xe3\x3f\x94\x0a\xa4\xa2\xcb\x71\x54\xc5\x63\x85\xf5\xe0\xff\x00\x00\x00\x00\xa9\x8a\xc7\x15\x31\x58\xe1\xfc\xa0\x55\x2a\x62\xb1\xc3\x4f\xb5\xe3\x3f\x94\x0a\xa4\xa2\xcb\x71\x54\xc5\x63\x85\xf5\xe0\xff" /dev/ttyUSB0
+0x72 -> 0x40 (RST) | 0x32 (50 channels)
+ids -> 0, 11111111, 22222222, 33333333, 44444444,55555555, 66666666, 77777777, 88888888, 99999999 > repeated 5 times
+
+
+00 00 00 1 - 0 00 00 02 -> two sensors
+00 00 00 3 - 0 00 00 04 -> two sensors
+00 00 00 5 - 0          -> one sensor and padding
+
+**** Set channels configuration - Disable all channels (protocol RST)
+./ls_send_message_uart "\x81\x40" /dev/ttyUSB0
+
+**** Get channel configuration of GSI
+./ls_send_message_uart "\x00\x81" /dev/ttyUSB0
+
+**** Recover GSI from all time
+./ls_send_message_uart "\x03\x42\x00\x00\x00\x00\xFF\xFF\xFF\xFF" /dev/ttyUSB0
+
+/********************** LS Voltage ****************************/
+
+**** Set configuration
+/* Configuration all channel enabled with input type CURRENT, CURRENT, VOLTAGE, VOLTAGE, no warmups, no output power supplies */
+./ls_send_message_uart "\x8f\x0F\x03\x00\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00" /dev/ttyUSB0
+
+0F = Channel Enabled Bitmap 
+03 = Input Type (CURRENT)
+00 = Output Power Supply (no output)
+0005 = Sensor Warmup time (5ms)
+
+INPUT TYPES:         00: Voltage;    01:Gauge;  02:Thermistor;  03:Current;  04:PTC;  05:Potentiometer
+OUTPUT POWER SUPPLY: 00: No output;  01: 12V;   02:24V
+
+
+**** Get configuration of Voltage
+./ls_send_message_uart "\x00\x8f" /dev/ttyUSB0
+
+
+
+/************************* LoRa *******************************/
+# PrCode: 55 (0x37 for 5VW-CE5) | SN: 16 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x37\x00\x10" /dev/ttyUSB0
+# PrCode: 50 (0x40 for GSI-CE1) | SN: 32 
+./ls_send_message_uart "\x06\x20\x85\x5E\x14\x40\x00\x20" /dev/ttyUSB0
+
+**** set lora addr msg (10000)
+./ls_send_message_uart "\x83\x00\x00\x27\x10"  /dev/ttyUSB0
+
+**** Get lora addr config
+./ls_send_message_uart "\x00\x83" /dev/ttyUSB0
+
+
+**** Set lora ch config. ChGrp 0, ChType 125, 6 ch enabled 
+*                                               - 820000000: x30E03500
+*                                               - 830000000: x3178CB80
+*                                               - 840000000: x32116200
+*                                               - 850000000: x32A9F880
+*                                               - 860000000: x33428F00
+*                                               - 870000000: x33DB2580
+./ls_send_message_uart "\x85\x00\xFC\x30\xE0\x35\x00\x31\x78\xCB\x80\x32\x11\x62\x00\x32\xA9\xF8\x80\x33\x42\x8F\x00\x33\xDB\x25\x80\x00\x00\x00\x00\x00\x00\x00\x00"  /dev/ttyUSB0
+
+**** Get lora chgrp 0 config.
+./ls_send_message_uart "\x00\x85" /dev/ttyUSB0
+
+**** Set lora ch config. ChGrp 1, ChType 125, 6 ch enabled 
+*                                               - 920000000: x36D61600
+*                                               - 930000000: x376EAC80
+*                                               - 940000000: x38074300
+*                                               - 950000000: x389FD980
+*                                               - 960000000: x39387000
+*                                               - 970000000: x39D10680
+./ls_send_message_uart "\x86\x00\xFC\x36\xD6\x16\x00\x37\x6E\xAC\x80\x38\x07\x43\x00\x38\x9F\xD9\x80\x39\x38\x70\x00\x39\xD1\x06\x80\x00\x00\x00\x00\x00\x00\x00\x00"  /dev/ttyUSB0
+
+**** Get lora chgrp 1 config.
+./ls_send_message_uart "\x00\x86" /dev/ttyUSB0
+
+
+**** Set lora general config. 
+*              - Radio Enabled, ETSI Disabled, ADR Enabled, SF 9: x59
+*              - TxPower 14: x0E
+*              - Do not use CustomRx2, Rx2SF 12: x0C
+*              - Rx2Freq 820000000: x30E03500
+*              - SendSlotTime 30: x001E
+./ls_send_message_uart "\x84\x00\x59\x0E\x0C\x30\xE0\x35\x00\x00\x1E"  /dev/ttyUSB0
+
+**** Get lora general config.
+./ls_send_message_uart "\x00\x84" /dev/ttyUSB0
+
+*** Do a lora coverage test. token 0xAABBCCDD
+./ls_send_message_uart "\xA\xAA\xBB\xCC\xDD" /dev/ttyUSB0
+
+
+**** Set lora Keys config
+./ls_send_message_uart "\x8D\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b\x2c\x2d\x2e\x2f\xAA\xBB\xCC\xDD\xE3\x5E" /dev/ttyUSB0
+./ls_send_message_uart "\x8D\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x99\x00\x00\x00\x09\xb9\x43" /dev/ttyUSB0
+
+**** Get lora Keys config
+./ls_send_message_uart "\x00\x8D" /dev/ttyUSB0
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+# Get the ssh and http password of any registered gateway.
+#
+# Script copied from loadsensing-servers repo if it doens't work
+# ensure it's the latest version.
+
+LIBPATH="$(dirname "$0")/lib/ls_gw_utils"
+source $LIBPATH
+
+check_argv_is_gw $# 
+
+GW_ID=$1
+GW_PASS=$(get_gw_pass $GW_ID)
+
+echo "SSH: $(echo $GW_PASS | awk '{print $8}')"
+echo "WEB: $(echo $GW_PASS | awk '{print $13}')"

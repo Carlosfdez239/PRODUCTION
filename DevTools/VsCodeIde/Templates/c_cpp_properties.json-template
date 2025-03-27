@@ -1,0 +1,104 @@
+{
+    "configurations": [
+        {
+            "name": "TILT360",
+            "includePath": [
+                //INCLUDEPATHS_FREERTOS
+                "Firmware/FreeRTOS/V10.4.6/include/*",
+                "Firmware/FreeRTOS/V10.4.6/portable/GCC/ARM_CM33_NTZ/non_secure/*",
+                "Firmware/FreeRTOS/WSPort/STM32U5/*",
+                "Firmware/FreeRTOS/WSPort/common/include/*",
+                "Firmware/LoadSensingG_App/config/FreeRTOS/STM/*",
+                "Firmware/LoadSensingG_App/config/STM32U5/*",
+                //INCLUDEPATHS_CSP
+                "Firmware/CSP/STM32U5xx/Inc/*",
+                "Firmware/CSP/CMSIS/V5.60/Include/*",
+                "Firmware/CSP/CMSIS/V5.60/DSP/Include/*",
+                "Firmware/CSP/CMSIS/V5.60/Device/ST/STM32U5xx/Include/*",
+                "Firmware/HAL/include/*",
+                "Firmware/HAL/STM32U5/include/*",
+                "Firmware/BSP/LS/BRD-G7-T90B-0/include/*",
+                "Firmware/BSP/LS/BRD-G7-T90S-0/include/*",
+                //INCLUDEPATHS_LIBS
+                "Firmware/Libs/include/*",
+                //INCLUDEPATHS_APP
+                "Firmware/LoadSensingG_App/*",
+                "Firmware/LoadSensingG_App/include/*",
+                "Firmware/AppModules/include/*",
+                "Firmware/LoadSensingG_App/config/*",
+                "Firmware/LoadSensingG_App/config/TILT360/*",
+                "Firmware/Libs/lib_semtech/mac/*",
+                "Firmware/Libs/lib_semtech/mac/crypto/*",
+                "Firmware/Libs/lib_semtech/radio/*",
+                "Firmware/Libs/lib_semtech/radio/sx1276/*",
+                "Firmware/SWL2001/smtc_modem_core/smtc_modem_crypto/soft_secure_element/*",
+                "Firmware/SWL2001/smtc_modem_core/radio_drivers/lr11xx_driver/src/*",
+                "Firmware/SWL2001/smtc_modem_core/smtc_ralf/src/*",
+                "Firmware/SWL2001/smtc_modem_core/smtc_ral/src/*",
+                "Firmware/SWL2001/smtc_modem_api/*",
+                "Firmware/SWL2001/smtc_modem_hal/*",
+                
+                //C_SRC_FREERTOS
+                "Firmware/FreeRTOS/V10.4.6/*",
+                "Firmware/FreeRTOS/V10.4.6/portable/MemMang/*",
+                "Firmware/FreeRTOS/V10.4.6/portable/GCC/ARM_CM33_NTZ/non_secure/*",
+                "Firmware/FreeRTOS/WSPort/STM32U5/*",
+                //C_SRC_CSP
+                "Firmware/CSP/STM32U5xx/Src/*",
+                "Firmware/CSP/CMSIS/V5.60/Device/ST/STM32U5xx/Source/Templates/*",
+                //C_SRC_HAL
+                "Firmware/HAL/STM32U5/*",
+                //C_SRC_DSP
+                "Firmware/Libs/lib_crc/*",
+                "Firmware/Libs/lib_mempool/*",
+                "Firmware/Libs/lib_watchdog/*",
+                "Firmware/Libs/lib_stream/*",
+                "Firmware/Libs/lib_ws/*",
+                "Firmware/Libs/lib_debug/*",
+                "Firmware/Libs/lib_ws/*",
+                "Firmware/BSP/LS/BRD-G7-T90B-0/*",
+                "Firmware/BSP/LS/BRD-G7-T90S-0/*",
+                "Firmware/Libs/lib_semtech/mac/*",
+                "Firmware/Libs/lib_adxl35x/*",
+                //C_SRC_APP
+                "Firmware/LoadSensingG_App/AlarmMng/*",
+                "Firmware/AppModules/PersistentStorage/*",
+                "Firmware/AppModules/CfgServer/*",
+                "Firmware/LoadSensingG_App/Health/*",
+                "Firmware/LoadSensingG_App/Comms/*",
+                "Firmware/LoadSensingG_App/CommandMng/*",
+                "Firmware/LoadSensingG_App/LocalCmds/*",
+                "Firmware/LoadSensingG_App/DataManipulation/*",
+                "Firmware/LoadSensingG_App/InMsgs/*",
+                "Firmware/LoadSensingG_App/OutMsgs/*",
+                "Firmware/LoadSensingG_App/OngoingJobs/*",
+                "Firmware/LoadSensingG_App/HWVersion/*",
+                "Firmware/LoadSensingG_App/Products/*",
+                "Firmware/LoadSensingG_App/DYN/*"
+            ],
+            "defines": [
+                "M_PI=3.14159265358979323846",
+                "DEBUG_EFM",
+                "CONFIG_ASSERT",
+                "WS_DEBUG",
+                "__FPU_PRESENT=1",
+                "BUILD_TIME=1657783420",
+                "DEBUG",
+                "CONFIG_ASSERT",
+                "WS_DEBUG",
+                "LORA=1",
+                "LOADSENSING_LR=LORA",
+                "__FPU_PRESENT=1",
+                "LS_TARGET_PRODUCT=LS_PRODUCT_TILT360",
+                "USE_FULL_LL_DRIVER",
+                "STM32U575xx",
+                "STM32U575VG"
+            ],
+            "cStandard": "c99",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "/opt/armgcc-10.3/bin/arm-none-eabi-gcc"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,14 @@
+./flash_and_configure.sh VIB
+[1;33m
+Paso 1. Descargando la aplicación a través del bootloader.[0m
+[38;5;33mLoadsensing DFU Tool[0m
+
+========================================
+
+Serial port error, please connect node.
+[31mDFU failed.[0m
+Node reboot attempt 0Checking if there is a bootloader without application
+Application found on device.
+[1;33mEsperando...[0m
+[1;33mPaso 3. Desconecte el cable USB-C del nodo. Luego, vuelva a conectarlo.[0m
+Presione una tecla para continuar...

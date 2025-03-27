@@ -1,0 +1,16 @@
+#!/bin/bash
+# Connect to any gateway (works both for old tunnel and new
+# VPN gateways)
+
+# Script copied from loadsensing-servers repo if it doens't work
+# ensure it's the latest version.
+
+LIBPATH="$(dirname "$0")/lib/ls_gw_utils"
+source $LIBPATH
+
+check_argv_is_gw $#
+
+GW_ID=$1
+GW_PASS_SSH=$(get_gw_pass_ssh "$GW_ID")
+
+ssh_gw $GW_ID $GW_PASS_SSH
